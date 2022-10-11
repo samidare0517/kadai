@@ -2,6 +2,7 @@
 #include "DxLib.h"
 #include "Pad.h"
 
+
 void SceneMain::init()
 {
 	m_textPosX = 0;

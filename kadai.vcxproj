@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ShotBase.cpp" />
     <ClCompile Include="LoadScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pad.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="SelectMenu.h" />
+    <ClInclude Include="ShotBase.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
