@@ -3,6 +3,7 @@
 #include "game.h"
 #include "LoadScene.h"
 #include "enemy.h"
+#include "ShotBase.h"
 #include "SceneManager.h"
 
 // プログラムは WinMain から始まります
@@ -26,6 +27,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// 最初のシーンの初期化
 	SceneManager scene;
 	scene.init();
+
+	ShotBase shot;
 
 	LoadScene player;
 	player.init();
@@ -82,7 +85,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				}
 			}
 		}
-		
+		for (int i = 0; i < 5; i++)
+		{
+			Vec2 dist = shot.getCenter() - enemyTbl[i].getCenter();
+			float radiusAdd = enemyTbl[i].getRadius() + shot.getRadius();
+			if (dist.length() < radiusAdd)
+			{
+				// あたった場合の処理
+				DrawFormatString(0, 0, GetColor(225, 0, 0), "ヒット！");
+				
+			}
+
+		}
+
 
 		// 画像の表示
 		for (auto& enemy : enemyTbl)

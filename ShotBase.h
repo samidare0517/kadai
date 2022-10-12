@@ -21,6 +21,12 @@ public:
 	// 存在するか
 	bool isExist() const { return m_isExist; }
 
+	// 当たり判定の半径取得
+	virtual float getRadius() const;
+
+	// 当たり判定の中心位置取得
+	virtual Vec2 getCenter() const;
+
 protected:
 
 	// グラフィックハンドル

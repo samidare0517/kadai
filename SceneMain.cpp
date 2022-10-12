@@ -29,7 +29,7 @@ void SceneMain::update()
 	
 	if (Pad::isTrigger(PAD_INPUT_4))
 	{
-		m_isEnd = true;
+		m_isEnd = false;
 	}
 }
 
