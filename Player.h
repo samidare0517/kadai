@@ -41,4 +41,6 @@ private:
 	// ˆÚ“®
 	Vec2 m_vec;
 
+	// ƒVƒ‡ƒbƒg‚Ì”­ŽËŠÔŠu
+	int m_shotInterval;
 };

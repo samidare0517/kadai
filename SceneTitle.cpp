@@ -41,7 +41,7 @@ void SceneTitle::update()
 
 	m_menu.update();
 
-	if (Pad::isTrigger(PAD_INPUT_1))
+	if (Pad::isTrigger(PAD_INPUT_2))
 	{
 		m_isEnd = true;
 	}

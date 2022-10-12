@@ -2,6 +2,7 @@
 
 #include "game.h"
 #include "LoadScene.h"
+#include "enemy.h"
 #include "SceneManager.h"
 
 // プログラムは WinMain から始まります
@@ -29,6 +30,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	LoadScene player;
 	player.init();
 
+	int SizeX = 0;
+	int SizeY = 0;
+
+	int handle = LoadGraph("data/enemy.png");
+	EnemyStraight enemyTbl[5];
+	float posX = 80.0f;
+	GetGraphSize(handle, &SizeX, &SizeY);
+
+	for (auto& enemy : enemyTbl)
+	{
+		enemy.init();
+		enemy.setHandle(handle, SizeX, SizeY);		// 表示する画像の指定
+		enemy.setPos(posX, 160.0f);		// 初期位置
+		posX += 80.0f;
+	}
+
+
 	while (ProcessMessage() == 0)
 	{
 		LONGLONG  time = GetNowHiPerformanceCount();
@@ -37,9 +55,41 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		scene.update();
 		player.update();
-
+		
 		scene.draw();
 		player.draw();
+
+		// キャラクターの移動
+		for (auto& enemy : enemyTbl)
+		{
+			enemy.update();
+		}
+
+		// 当たり判定
+
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = i + 1; j < 5; j++)
+			{
+				// enemyTbl[i]とenemyTbl[j]の当たり判定をとる
+				Vec2 dist = enemyTbl[i].getCenter() - enemyTbl[j].getCenter();
+				float radiusAdd = enemyTbl[i].getRadius() + enemyTbl[j].getRadius();
+				if (dist.length() < radiusAdd)
+				{
+					// あたった場合の処理
+					enemyTbl[i].bound(enemyTbl[j].getCenter());
+					enemyTbl[j].bound(enemyTbl[i].getCenter());
+				}
+			}
+		}
+		
+
+		// 画像の表示
+		for (auto& enemy : enemyTbl)
+		{
+			enemy.draw();
+		}
+
 
 		//裏画面を表画面を入れ替える
 		ScreenFlip();
@@ -55,6 +105,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	scene.end();
 	player.end();
+
+	DeleteGraph(handle);
+
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 
 	return 0;				// ソフトの終了 

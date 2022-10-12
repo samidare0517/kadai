@@ -27,7 +27,7 @@ void SceneMain::update()
 	}
 
 	
-	if (Pad::isTrigger(PAD_INPUT_1))
+	if (Pad::isTrigger(PAD_INPUT_4))
 	{
 		m_isEnd = true;
 	}
@@ -35,5 +35,5 @@ void SceneMain::update()
 
 void SceneMain::draw()
 {
-	DrawString(m_textPosX, 0,"ƒƒCƒ“‰æ–Ê",GetColor(255,255,255));
+	DrawString(m_textPosX, 0,"ƒQ[ƒ€‰æ–Ê",GetColor(255,255,255));
 }

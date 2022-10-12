@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="ShotBase.cpp" />
     <ClCompile Include="LoadScene.cpp" />
     <ClCompile Include="main.cpp" />
@@ -161,9 +162,11 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="SelectMenu.cpp" />
+    <ClCompile Include="ShotNormal.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="Pad.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="SelectMenu.h" />
     <ClInclude Include="ShotBase.h" />
+    <ClInclude Include="ShotNormal.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

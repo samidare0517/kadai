@@ -19,6 +19,12 @@
     <Filter Include="ヘッダー ファイル\Scene">
       <UniqueIdentifier>{0173a150-ec3b-46a1-9c04-a7aec6416f55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Shot">
+      <UniqueIdentifier>{a7e59349-e55e-4d0d-bd59-6d8a842178f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Shot">
+      <UniqueIdentifier>{baa1ae8c-3167-4efd-81c4-12208884ea8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,7 +57,13 @@
     <ClCompile Include="LoadScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ShotNormal.cpp">
+      <Filter>ソース ファイル\Shot</Filter>
+    </ClCompile>
     <ClCompile Include="ShotBase.cpp">
+      <Filter>ソース ファイル\Shot</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -87,6 +99,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ShotBase.h">
+      <Filter>ヘッダー ファイル\Shot</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotNormal.h">
+      <Filter>ヘッダー ファイル\Shot</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
