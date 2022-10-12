@@ -80,7 +80,7 @@ void Player::update()
 
 		if (m_vec.y > kSpeedMax)
 		{
-			m_vec.y > kSpeedMax;
+			m_vec.y = kSpeedMax;
 		}
 	}
 	else
@@ -91,7 +91,7 @@ void Player::update()
 	{
 		m_vec.x -= kAcc;
 
-		if (m_vec.x > kSpeedMax)
+		if (m_vec.x < kSpeedMax)
 		{
 			m_vec.x = -kSpeedMax;
 		}
