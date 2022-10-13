@@ -71,6 +71,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		// 当たり判定
 
+		// バウンド
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = i + 1; j < 5; j++)
@@ -86,6 +87,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				}
 			}
 		}
+
+		// 弾と敵の当たり判定
 		for (int i = 0; i < 5; i++)
 		{
 			Vec2 dist = shot.getCenter() - enemyTbl[i].getCenter();
@@ -94,7 +97,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				// あたった場合の処理
 				DrawFormatString(350, 350, GetColor(225, 0, 0), "ヒット！");
-
+				   
 			}
 
 		}

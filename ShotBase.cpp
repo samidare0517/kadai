@@ -43,7 +43,7 @@ void ShotBase::update()
 // •\Ž¦
 void ShotBase::draw()
 {
-	
+	if (!m_isExist)return;
 	DrawGraph(m_pos.x, m_pos.y, m_handle, true);
 	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>( getRadius()), GetColor(225, 225, 225), false);
 }
