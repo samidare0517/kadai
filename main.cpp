@@ -94,7 +94,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				// ‚ ‚½‚Á‚½ê‡‚Ìˆ—
 				DrawFormatString(350, 350, GetColor(225, 0, 0), "ƒqƒbƒgI");
-				
+
 			}
 
 		}

@@ -77,6 +77,7 @@ void Player::update()
 		{
 			m_vec.y = -kSpeedMax;
 		}
+		
 	}
 	else if (padState & PAD_INPUT_DOWN)
 	{
@@ -86,6 +87,7 @@ void Player::update()
 		{
 			m_vec.y = kSpeedMax;
 		}
+
 	}
 	else
 	{
@@ -99,6 +101,7 @@ void Player::update()
 		{
 			m_vec.x = -kSpeedMax;
 		}
+		
 	}
 	else if (padState & PAD_INPUT_RIGHT)
 	{
