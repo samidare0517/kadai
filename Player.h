@@ -28,6 +28,12 @@ public:
 	// î•ñ‚Ìæ“¾
 	Vec2 getPos() const { return m_pos; }
 
+
+	// “–‚½‚è”»’è‚Ì”¼Œaæ“¾
+	virtual float getRadius() const;
+
+	// “–‚½‚è”»’è‚Ì’†SˆÊ’uæ“¾
+	virtual Vec2 getCenter() const;
 private:
 
 	int m_handle;

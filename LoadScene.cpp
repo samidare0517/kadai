@@ -6,9 +6,6 @@
 
 namespace
 {
-
-
-
 	// ƒVƒ‡ƒbƒg‚Ì”­ŽËŠÔŠu
 	constexpr int kShotInterval = 16;
 }

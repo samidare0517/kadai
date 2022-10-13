@@ -26,6 +26,8 @@ Enemy::Enemy()
 
 	// ˆÚ“®—Ê
 	m_vec;
+
+
 }
 
 Enemy::~Enemy()
@@ -54,6 +56,7 @@ void Enemy::setPos(float x, float y)
 
 void Enemy::draw()
 {
+
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
 	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>( getRadius()), GetColor(225, 225, 225), false);
 }

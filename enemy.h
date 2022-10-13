@@ -23,6 +23,7 @@ public:
 	// ‚Ù‚©‚Ì“G‚É“–‚½‚Á‚½ê‚ ‚è‚Ì”½Ëˆ—
 	virtual void bound(Vec2 targetPos);
 
+	
 protected:
 
 	int m_handle;	// ‰æ‘œ‚Ìƒnƒ“ƒhƒ‹
@@ -35,6 +36,10 @@ protected:
 	// ˆÚ“®—Ê
 	Vec2 m_vec;
 
+	// ¶ãÀ•W
+	Vec2 m_size;
+
+	
 };
 
 // ‚Ü‚Á‚·‚®ˆÚ“®
