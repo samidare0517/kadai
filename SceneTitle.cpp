@@ -11,8 +11,7 @@ void SceneTitle::init()
 
 	m_menu.init();
 	m_menu.addItem("ゲームスタート");
-	m_menu.addItem("オプション");
-	m_menu.addItem("ゲーム終了");
+
 
 	m_menu.setPos(64, 64);
 

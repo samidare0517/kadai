@@ -93,7 +93,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			if (dist.length() < radiusAdd)
 			{
 				// あたった場合の処理
-				DrawFormatString(0, 0, GetColor(225, 0, 0), "ヒット！");
+				DrawFormatString(350, 350, GetColor(225, 0, 0), "ヒット！");
 				
 			}
 
