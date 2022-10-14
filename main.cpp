@@ -91,6 +91,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		// ’e‚Æ“G‚Ì“–‚½‚è”»’è
 		for (int i = 0; i < 5; i++)
 		{
+
 			Vec2 dist = shot.getCenter() - enemyTbl[i].getCenter();
 			float radiusAdd = enemyTbl[i].getRadius() + shot.getRadius();
 			if (dist.length() < radiusAdd)

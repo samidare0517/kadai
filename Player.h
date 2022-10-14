@@ -30,10 +30,11 @@ public:
 
 
 	// “–‚½‚è”»’è‚Ì”¼Œaæ“¾
-	virtual float getRadius() const;
+//	virtual float getRadius() const;
 
 	// “–‚½‚è”»’è‚Ì’†SˆÊ’uæ“¾
-	virtual Vec2 getCenter() const;
+//	virtual Vec2 getCenter() const;
+
 private:
 
 	int m_handle;

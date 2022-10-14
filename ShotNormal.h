@@ -20,5 +20,4 @@ public:
 	// XV
 	virtual void update();
 
-
 };

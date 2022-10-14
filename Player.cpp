@@ -7,7 +7,7 @@ namespace
 {
 
 	// 当たり半径の半径
-	constexpr float kColRadius = 16.0f;
+//	constexpr float kColRadius = 16.0f;
 
 	// X方向、Y方向の最大速度
 	constexpr float kSpeedMax = 8.0f;
@@ -125,31 +125,31 @@ void Player::update()
 void Player::draw()
 {
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
-	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>( getRadius()), GetColor(225, 225, 225), false);
+//	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>( getRadius()), GetColor(225, 225, 225), false);
 }
 
-// 当たり判定の半径取得
-float Player::getRadius() const
-{
-	return kColRadius;
-}
-
-// 当たり判定の中心位置取得
-Vec2 Player::getCenter() const
-{
-	int sizeX = 0;
-	int sizeY = 0;
-
-	if (GetGraphSize(m_handle, &sizeX, &sizeY) == -1)
-	{
-		// サイズが取得できなかった場合は左位置を渡しておく
-		return m_pos;
-
-	}
-
-	Vec2 result = m_pos;
-	result.x += sizeX / 2;
-	result.y += sizeY / 2;
-
-	return result;
-}
+//// 当たり判定の半径取得
+//float Player::getRadius() const
+//{
+//	return kColRadius;
+//}
+//
+//// 当たり判定の中心位置取得
+//Vec2 Player::getCenter() const
+//{
+//	int sizeX = 0;
+//	int sizeY = 0;
+//
+//	if (GetGraphSize(m_handle, &sizeX, &sizeY) == -1)
+//	{
+//		// サイズが取得できなかった場合は左位置を渡しておく
+//		return m_pos;
+//
+//	}
+//
+//	Vec2 result = m_pos;
+//	result.x += sizeX / 2;
+//	result.y += sizeY / 2;
+//
+//	return result;
+//}
