@@ -4,7 +4,10 @@
 
 SceneManager::SceneManager()
 {
-	m_kind = kSceneKindTitle;
+	m_kind;
+	m_title;
+	m_main;
+
 }
 SceneManager::~SceneManager()
 {
@@ -22,8 +25,10 @@ void SceneManager::init(SceneKind kind)
 	case SceneManager::kSceneKindMain:
 		m_main.init();
 		break;
+	
 	case SceneManager::kSceneKindNum:
 	default:
+
 		assert(false);
 		break;
 	}

@@ -44,6 +44,7 @@ int SelectMenu::Item::getTextWidth()
 
 SelectMenu::Cursor::Cursor()
 {
+	m_itemNum = 0;
 	m_selectIndex = 0;
 	m_repeatUp = 0;
 	m_repeatDown = 0;

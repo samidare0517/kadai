@@ -5,6 +5,7 @@
 
 void SceneMain::init()
 {
+
 	m_textPosX = 0;
 	m_textVecX = 4;
 
@@ -13,6 +14,8 @@ void SceneMain::init()
 
 void SceneMain::update()
 {
+	
+
 	// •¶Žš‚ÌˆÚ“®
 	m_textPosX += m_textVecX;
 	if (m_textPosX < 0)
@@ -27,7 +30,7 @@ void SceneMain::update()
 	}
 
 	
-	if (Pad::isTrigger(PAD_INPUT_4))
+	if (Pad::isTrigger(PAD_INPUT_2))
 	{
 		m_isEnd = true;
 	}
@@ -35,5 +38,6 @@ void SceneMain::update()
 
 void SceneMain::draw()
 {
+
 	DrawString(m_textPosX, 0,"ƒQ[ƒ€‰æ–Ê",GetColor(255,255,255));
 }

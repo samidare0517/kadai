@@ -2,17 +2,22 @@
 #include "Vec2.h"
 #include "game.h"
 
+class LoadScene;
+
 class Enemy
 {
 public:
 	Enemy();
 	virtual ~Enemy();
 
-	virtual void init();
-	virtual void setHandle(int handle, int sizeX, int sizeY);
-	virtual void setPos(float x, float y);
-	virtual void update() = 0;		// 純粋仮想関数
-	virtual void draw();
+	void setHandle(int handle) { m_handle = handle; }
+	void init();
+	void setPos(float x, float y);
+	void setMain(LoadScene* pMain) { m_pMain = pMain; }
+	void update();
+	void draw();
+
+	Vec2 getPos() const { return m_pos; }
 
 	// 当たり判定の半径取得
 	virtual float getRadius() const;
@@ -24,11 +29,14 @@ public:
 	virtual void bound(Vec2 targetPos);
 
 	
-protected:
+private:
 
 	int m_handle;	// 画像のハンドル
 	int sizeX;
 	int sizeY;
+	LoadScene* m_pMain;
+
+	
 
 	// 位置
 	Vec2 m_pos;
@@ -40,18 +48,5 @@ protected:
 	Vec2 m_size;
 
 	
-};
-
-// まっすぐ移動
-
-class EnemyStraight : public Enemy
-{
-public:
-	EnemyStraight();
-	virtual ~EnemyStraight() {}
-
-	virtual void init() override;
-			void update() override;
-
 
 };

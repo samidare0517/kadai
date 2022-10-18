@@ -25,19 +25,6 @@ void SceneTitle::end()
 
 void SceneTitle::update()
 {
-	// •¶Žš‚ÌˆÚ“®
-	m_textPosY += m_textVecY;
-	if (m_textPosY < 0)
-	{
-		m_textPosY = 0;
-		m_textVecY = 4;
-	}
-	if (m_textPosY > 200)
-	{
-		m_textPosY = 200;
-		m_textVecY = -4;
-	}
-
 	m_menu.update();
 
 	if (Pad::isTrigger(PAD_INPUT_2))

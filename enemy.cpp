@@ -15,6 +15,8 @@ namespace
 
 Enemy::Enemy()
 {
+	
+
 	sizeX = 0;
 	sizeY = 0;
 
@@ -37,15 +39,10 @@ Enemy::~Enemy()
 
 void Enemy::init()
 {
+	// ‰Šú‘¬“x‚ğİ’è
+	m_vec.x = 3.0f;
+	m_vec.y = 3.0f;
 
-
-}
-
-void Enemy::setHandle(int handle, int SizeX, int SizeY)
-{
-	m_handle = handle;
-	sizeX = SizeX;
-	sizeY = SizeY;
 }
 
 void Enemy::setPos(float x, float y)
@@ -54,11 +51,38 @@ void Enemy::setPos(float x, float y)
 	m_pos.y = y;
 }
 
+void Enemy::update()
+{
+	m_pos += m_vec;
+
+	if (m_pos.x < 0.0f)
+	{
+		m_pos.x = 0.0f;
+		m_vec.x *= -1.0f;
+	}
+	if (m_pos.x > Game::kScreenWindth - sizeX)
+	{
+		m_pos.x = static_cast<float>(Game::kScreenWindth - sizeX);
+		m_vec.x *= -1.0f;
+	}
+	if (m_pos.y < 0.0f)
+	{
+		m_pos.y = 0.0f;
+		m_vec.y *= -1.0f;
+	}
+	if (m_pos.y > Game::kScreenHeight - sizeY)
+	{
+		m_pos.y = static_cast<float>(Game::kScreenHeight - sizeY);
+		m_vec.y *= -1.0f;
+	}
+}
+
+
 void Enemy::draw()
 {
-
+	
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
-	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>( getRadius()), GetColor(225, 225, 225), false);
+	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>(getRadius()), GetColor(225, 225, 225), false);
 }
 
 // “–‚½‚è”»’è‚Ì”¼Œaæ“¾
@@ -96,42 +120,4 @@ void Enemy::bound(Vec2 targetPos)
 
 	// ”½‘Î•ûŒü‚ÉŒ»İ‚Ì‘¬“x‚ÅˆÚ“®‚·‚é‚æ‚¤‚É‚·‚é
 	m_vec = boundDir.normalize() * speed;
-}
-
-EnemyStraight::EnemyStraight()
-{
-
-}
-
-void EnemyStraight::init()
-{
-	// ‰Šú‘¬“x‚ğİ’è
-	m_vec.x = 4.0f;
-	m_vec.y = 4.0f;
-}
-
-void EnemyStraight::update()
-{
-	m_pos += m_vec;
-
-	if (m_pos.x < 0.0f)
-	{
-		m_pos.x = 0.0f;
-		m_vec.x *= -1.0f;
-	}
-	if (m_pos.x > Game::kScreenWindth - sizeX)
-	{
-		m_pos.x = static_cast<float>(Game::kScreenWindth - sizeX);
-		m_vec.x *= -1.0f;
-	}
-	if (m_pos.y < 0.0f)
-	{
-		m_pos.y = 0.0f;
-		m_vec.y *= -1.0f;
-	}
-	if (m_pos.y > Game::kScreenHeight - sizeY)
-	{
-		m_pos.y = static_cast<float>(Game::kScreenHeight - sizeY);
-		m_vec.y *= -1.0f;
-	}
 }

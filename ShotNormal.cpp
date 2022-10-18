@@ -3,7 +3,7 @@
 
 namespace
 {
-	constexpr float kShotSpeed = 8.0f;
+	constexpr float kShotSpeed = 15.0f;
 }
 
 void ShotNormal::start(Vec2 pos)

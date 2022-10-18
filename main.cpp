@@ -29,27 +29,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager scene;
 	scene.init();
 
-	ShotBase shot;
-
 	LoadScene player;
 	player.init();
 
-	int SizeX = 0;
-	int SizeY = 0;
-
-	int handle = LoadGraph("data/enemy.png");
-	EnemyStraight enemyTbl[5];
-	float posX = 80.0f;
-	GetGraphSize(handle, &SizeX, &SizeY);
-
-	for (auto& enemy : enemyTbl)
-	{
-		enemy.init();
-		enemy.setHandle(handle, SizeX, SizeY);		// 表示する画像の指定
-		enemy.setPos(posX, 160.0f);		// 初期位置
-		posX += 80.0f;
-	}
-
+	LoadScene enemy;
+	enemy.init();
 
 	while (ProcessMessage() == 0)
 	{
@@ -59,57 +43,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		scene.update();
 		player.update();
-		
+		enemy.update();
+
 		scene.draw();
 		player.draw();
-
-		// キャラクターの移動
-		for (auto& enemy : enemyTbl)
-		{
-			enemy.update();
-		}
-
-		// 当たり判定
-
-		// バウンド
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = i + 1; j < 5; j++)
-			{
-				// enemyTbl[i]とenemyTbl[j]の当たり判定をとる
-				Vec2 dist = enemyTbl[i].getCenter() - enemyTbl[j].getCenter();
-				float radiusAdd = enemyTbl[i].getRadius() + enemyTbl[j].getRadius();
-				if (dist.length() < radiusAdd)
-				{
-					// あたった場合の処理
-					enemyTbl[i].bound(enemyTbl[j].getCenter());
-					enemyTbl[j].bound(enemyTbl[i].getCenter());
-				}
-			}
-		}
-
-		// 弾と敵の当たり判定
-		for (int i = 0; i < 5; i++)
-		{
-
-			Vec2 dist = shot.getCenter() - enemyTbl[i].getCenter();
-			float radiusAdd = enemyTbl[i].getRadius() + shot.getRadius();
-			if (dist.length() < radiusAdd)
-			{
-				// あたった場合の処理
-				DrawFormatString(350, 350, GetColor(225, 0, 0), "ヒット！");
-				   
-			}
-
-		}
-
-
-		// 画像の表示
-		for (auto& enemy : enemyTbl)
-		{
-			enemy.draw();
-		}
-
+		enemy.draw();
+	
 
 		//裏画面を表画面を入れ替える
 		ScreenFlip();
@@ -125,8 +64,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	scene.end();
 	player.end();
-
-	DeleteGraph(handle);
+	enemy.end();
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 

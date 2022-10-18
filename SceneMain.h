@@ -1,5 +1,7 @@
 #pragma once
 #include "SceneBase.h"
+#include "enemy.h"
+#include"Player.h"
 
 class SceneMain : public SceneBase
 {
@@ -26,4 +28,7 @@ private:
 	int m_textVecX;
 
 	bool m_isEnd;
+
+	Enemy enemy;
+	Player player;
 };

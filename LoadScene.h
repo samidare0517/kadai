@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "ShotBase.h"
+#include "enemy.h"
 
 
 class LoadScene
@@ -34,12 +35,16 @@ private:
 	// プレイヤーのグラフィックハンドル
 	int m_hPlayerGraohic;
 	int m_hShotGraphic;
+	int m_hEnemyGraphc;
 
 	// プレイヤー
 	Player m_player;
 
+	// エネミー
+	Enemy m_enemy;
+
 	// ショット
-	std::vector< ShotBase*> m_pShotVt;
+	std::vector<ShotBase*> m_pShotVt;
 
 
 };
