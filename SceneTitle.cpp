@@ -36,4 +36,5 @@ void SceneTitle::update()
 void SceneTitle::draw()
 {
 	m_menu.draw();
+	DrawString(400, 100, "ƒ^ƒCƒgƒ‹‰æ–Ê", GetColor(255, 255, 255));
 }

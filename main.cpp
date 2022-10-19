@@ -1,10 +1,10 @@
 #include "DxLib.h"
 
 #include "game.h"
-#include "LoadScene.h"
 #include "enemy.h"
 #include "ShotBase.h"
 #include "SceneManager.h"
+#include "SceneMain.h"
 
 
 // プログラムは WinMain から始まります
@@ -29,12 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SceneManager scene;
 	scene.init();
 
-	LoadScene player;
-	player.init();
-
-	LoadScene enemy;
-	enemy.init();
-
+	
 	while (ProcessMessage() == 0)
 	{
 		LONGLONG  time = GetNowHiPerformanceCount();
@@ -42,13 +37,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 
 		scene.update();
-		player.update();
-		enemy.update();
-
+		
 		scene.draw();
-		player.draw();
-		enemy.draw();
-	
+		
 
 		//裏画面を表画面を入れ替える
 		ScreenFlip();
@@ -63,8 +54,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	scene.end();
-	player.end();
-	enemy.end();
+	
 
 	DxLib_End();				// ＤＸライブラリ使用の終了処理
 

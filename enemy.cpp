@@ -40,8 +40,8 @@ Enemy::~Enemy()
 void Enemy::init()
 {
 	// ‰Šú‘¬“x‚ğİ’è
-	m_vec.x = 3.0f;
-	m_vec.y = 3.0f;
+	m_vec.x = 6.5f;
+	m_vec.y = 6.5f;
 
 }
 
@@ -80,7 +80,7 @@ void Enemy::update()
 
 void Enemy::draw()
 {
-	
+	if (m_isDead) return;
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
 	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>(getRadius()), GetColor(225, 225, 225), false);
 }

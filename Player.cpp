@@ -1,13 +1,13 @@
 #include "DxLib.h"
 #include "game.h"
 #include "Player.h"
-#include "LoadScene.h"
+#include "SceneMain.h"
 
 namespace
 {
 
 	// “–‚½‚è”¼Œa‚Ì”¼Œa
-	constexpr float kColRadius = 16.0f;
+	constexpr float kColRadius = 20.0f;
 
 	// X•ûŒüAY•ûŒü‚ÌÅ‘å‘¬“x
 	constexpr float kSpeedMax = 8.0f;
@@ -125,6 +125,7 @@ void Player::update()
 // •`‰æ
 void Player::draw()
 {
+	 
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
 	DrawCircle(static_cast<int>(getCenter().x), static_cast<int>(getCenter().y), static_cast<int>(getRadius()), GetColor(225, 225, 225), false);
 }

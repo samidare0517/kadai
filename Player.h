@@ -2,7 +2,7 @@
 
 #include "Vec2.h"
 
-class LoadScene;
+class SceneMain;
 
 class Player
 {
@@ -17,13 +17,15 @@ public:
 	void init();
 
 	// ScneneMainクラスのポインタ設定
-	void setMain(LoadScene* pMain) { m_pMain = pMain; }
-	
+	void setMain(SceneMain* pMain) { m_pMain = pMain; }
+
 	// 処理
 	void update();
 
 	// 描画
 	void draw();
+
+	
 
 	// 情報の取得
 	Vec2 getPos() const { return m_pos; }
@@ -35,19 +37,25 @@ public:
 	// 当たり判定の中心位置取得
 	virtual Vec2 getCenter() const;
 
+
 private:
 
 	int m_handle;
-	
+
 	// SceneMainのポインタ
-	LoadScene* m_pMain;
-	
+	SceneMain* m_pMain;
+
 	// 表示位置
 	Vec2 m_pos;
 
 	// 移動
 	Vec2 m_vec;
 
+		
+	
 	// ショットの発射間隔
 	int m_shotInterval;
+
+	
+
 };
