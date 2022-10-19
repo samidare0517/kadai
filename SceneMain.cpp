@@ -97,7 +97,8 @@ void SceneMain::update()
 		// Player‚Ìflag (false = ¶‘¶)
 		bool isEnd = false;
 		// enemy‚ª€‚ñ‚Å‚¢‚½‚ç€‚ñ‚¾enemy•\¦‚µ‚È‚¢
-	
+		
+	//	if (enemy->isDead())return false;
 
 		Vec2  dist = m_player.getCenter() - enemy[i].getCenter();
 		float radiusAdd = enemy[i].getRadius() + m_player.getRadius();
