@@ -186,7 +186,7 @@ void SceneMain::update()
 		m_isEnd = true;
 
 		// デバック用
-		DrawString(m_textPosX, 100, "ゲームクリア", GetColor(255, 255, 255));
+	//	DrawString(m_textPosX, 100, "ゲームクリア", GetColor(255, 255, 255));
 	}
 
 }

@@ -21,7 +21,7 @@ void SceneResult::update()
 
 	if (Pad::isTrigger(PAD_INPUT_2))
 	{
-		m_isEnd = true;
+		m_isEnd = false;
 	}
 }
 
