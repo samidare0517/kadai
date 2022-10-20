@@ -17,6 +17,7 @@ public:
 		m_hPlayerGraohic = -1;
 		m_hShotGraphic = -1;
 		m_hEnemyGraphc = -1;
+		m_EnemyNum = 0;
 		
 	}
 	virtual ~SceneMain() {}
@@ -44,6 +45,8 @@ private:
 	int m_hPlayerGraohic;
 	int m_hShotGraphic;
 	int m_hEnemyGraphc;
+
+	int m_EnemyNum;
 
 	bool m_isEnd;
 

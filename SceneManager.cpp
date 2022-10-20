@@ -7,7 +7,7 @@ SceneManager::SceneManager()
 	m_kind;
 	m_title;
 	m_main;
-
+	m_result;
 }
 SceneManager::~SceneManager()
 {
@@ -25,7 +25,10 @@ void SceneManager::init(SceneKind kind)
 	case SceneManager::kSceneKindMain:
 		m_main.init();
 		break;
-	
+	case SceneManager::kSceneKindResult:
+		m_result.init();
+		break;
+
 	case SceneManager::kSceneKindNum:
 	default:
 
@@ -43,6 +46,9 @@ void SceneManager::end()
 		break;
 	case SceneManager::kSceneKindMain:
 		m_main.end();
+		break;
+	case SceneManager::kSceneKindResult:
+		m_result.end();
 		break;
 	case SceneManager::kSceneKindNum:
 	default:
@@ -67,6 +73,10 @@ void SceneManager::update()
 		m_main.update();
 		isEnd = m_main.isEnd();
 		break;
+	case SceneManager::kSceneKindResult:
+		m_result.update();
+		isEnd = m_result.isEnd();
+		break;
 	case SceneManager::kSceneKindNum:
 	default:
 		assert(false);
@@ -83,6 +93,11 @@ void SceneManager::update()
 			break;
 		case SceneManager::kSceneKindMain:
 			m_main.end();
+			m_result.init();
+			m_kind = kSceneKindResult;
+			break;
+		case SceneManager::kSceneKindResult:
+			m_result.end();
 			m_title.init();
 			m_kind = kSceneKindTitle;
 			break;
@@ -103,6 +118,9 @@ void SceneManager::draw()
 		break;
 	case SceneManager::kSceneKindMain:
 		m_main.draw();
+		break;
+	case SceneManager::kSceneKindResult:
+		m_result.draw();
 		break;
 	case SceneManager::kSceneKindNum:
 	default:

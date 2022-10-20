@@ -16,8 +16,8 @@ public:
 	void setMain(SceneMain* pMain) { m_pMain = pMain; }
 	void update();
 	void draw();
-	
 	void setDead() { m_isDead = true; }
+	
 
 	Vec2 getPos() const { return m_pos; }
 
@@ -29,8 +29,9 @@ public:
 	
 	// ‚Ù‚©‚Ì“G‚É“–‚½‚Á‚½ê‚ ‚è‚Ì”½Ëˆ—
 	virtual void bound(Vec2 targetPos);
+	
+	bool isDead()const{return m_isDead;}
 
-	bool isDead()const { return m_isDead; }
 
 private:
 

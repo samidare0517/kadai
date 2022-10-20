@@ -19,7 +19,7 @@ public:
 	// •\¦
 	virtual void draw();
 
-
+	
 
 	// ‘¶İ‚·‚é‚©
 	bool isExist() const { return m_isExist; }
@@ -29,6 +29,8 @@ public:
 
 	// “–‚½‚è”»’è‚Ì’†SˆÊ’uæ“¾
 	virtual Vec2 getCenter() const;
+
+	
 
 protected:
 
@@ -44,5 +46,6 @@ protected:
 
 	// ‘¶İ‚·‚é‚©
 	bool m_isExist;
+
 
 };

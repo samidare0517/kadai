@@ -2,6 +2,7 @@
 
 #include "SceneTitle.h"
 #include "SceneMain.h"
+#include "SceneResult.h"
 
 
 class SceneManager
@@ -12,7 +13,7 @@ public:
 	{
 		kSceneKindTitle,
 		kSceneKindMain,
-		
+		kSceneKindResult,
 
 		kSceneKindNum
 	}SceneKind;
@@ -33,5 +34,5 @@ private:
 
 	SceneTitle	m_title;
 	SceneMain	m_main;
-	
+	SceneResult m_result;
 };

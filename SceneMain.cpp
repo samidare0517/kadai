@@ -6,12 +6,13 @@
 #include "enemy.h"
 #include "SceneTitle.h"
 
-
 namespace
 {
 	Enemy enemy[5];
 
 	bool kCheck;
+
+	int EnemyNum = 5;
 
 	// ショットの発射間隔
 	constexpr int kShotInterval = 16;
@@ -22,6 +23,8 @@ void SceneMain::init()
 
 	m_textPosX = 0;
 	m_textVecX = 4;
+
+	m_EnemyNum = EnemyNum;
 
 	m_isEnd = false;
 
@@ -75,10 +78,12 @@ void SceneMain::update()
 	std::vector<ShotBase*>::iterator it = m_pShotVt.begin();
 
 	// enemyバウンド判定
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < EnemyNum; i++)
 	{
-		for (int j = i + 1; j < 5; j++)
+		for (int j = i + 1; j < EnemyNum; j++)
 		{
+			if (enemy[i].isDead())continue;
+
 			// enemy[i]とenemy[j]の当たり判定をとる
 			Vec2  dist = enemy[i].getCenter() - enemy[j].getCenter();
 			float radiusAdd = enemy[i].getRadius() + enemy[j].getRadius();
@@ -90,22 +95,25 @@ void SceneMain::update()
 			}
 		}
 	}
+	
 
 	// enemyとplayerの当たり判定
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < EnemyNum; i++)
 	{
 		// Playerのflag (false = 生存)
 		bool isEnd = false;
 		// enemyが死んでいたら死んだenemy表示しない
 		
-	//	if (enemy->isDead())return false;
 
+
+		if (enemy[i].isDead())continue;		
+		
 		Vec2  dist = m_player.getCenter() - enemy[i].getCenter();
 		float radiusAdd = enemy[i].getRadius() + m_player.getRadius();
 		if (dist.length() < radiusAdd)
 		{
 			// 当たった場合の処理
-			DrawFormatString(400, 0, GetColor(255, 0, 0), "ぶつかってしまった!");
+		//	DrawFormatString(400, 0, GetColor(255, 0, 0), "ぶつかってしまった!");
 			
 			// Playerが敵と接触した時点でゲームを終了する
 			isEnd = true;
@@ -113,9 +121,9 @@ void SceneMain::update()
 
 		}
 	}
-	DrawCircle(static_cast<int>(m_player.getCenter().x), static_cast<int>(m_player.getCenter().y), static_cast<int>(m_player.getRadius()), GetColor(225, 225, 0), false);
+//	DrawCircle(static_cast<int>(m_player.getCenter().x), static_cast<int>(m_player.getCenter().y), static_cast<int>(m_player.getRadius()), GetColor(225, 225, 0), false);
 	
-
+	
 
 	while (it != m_pShotVt.end())
 	{
@@ -126,17 +134,17 @@ void SceneMain::update()
 
 		pShot->update();
 
-
 		// enemyと弾の当たり判定
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < EnemyNum; i++)
 		{
+			
+			if (enemy[i].isDead())continue;
+
 			Vec2 dist = (*pShot).getCenter() - enemy[i].getCenter();
 			float radiusAdd = enemy[i].getRadius() + (*pShot).getRadius();
 			if (dist.length() < radiusAdd)
 			{
-				// shotにenemyが当たった場合の死亡判定
-			
-				DrawFormatString(200, 0, GetColor(225, 0, 0), "ヒット！");
+			//	DrawFormatString(200, 0, GetColor(225, 0, 0), "ヒット！");
 				kCheck = true;
 			
 			}
@@ -147,10 +155,10 @@ void SceneMain::update()
 			if (isCol() == true)
 			{
 				enemy[i].setDead();
+				m_EnemyNum--;
 			}
 		}
-		DrawCircle(static_cast<int>((*pShot).getCenter().x), static_cast<int>((*pShot).getCenter().y), static_cast<int>((*pShot).getRadius()), GetColor(225, 225, 225), false);
-
+	//	DrawCircle(static_cast<int>((*pShot).getCenter().x), static_cast<int>((*pShot).getCenter().y), static_cast<int>((*pShot).getRadius()), GetColor(225, 225, 225), false);
 
 		if (!pShot->isExist())
 		{
@@ -166,12 +174,23 @@ void SceneMain::update()
 	}
 
 	
-	if (Pad::isTrigger(PAD_INPUT_2))
+	//if (Pad::isTrigger(PAD_INPUT_2))
+	//{
+	//	m_isEnd = false;
+	//	// デバック用
+	//	DrawString(m_textPosX, 100, "ゲーム画面", GetColor(255, 255, 255));
+	//}
+
+	if (m_EnemyNum == 0)
 	{
-		m_isEnd = false;
+		m_isEnd = true;
+
+		// デバック用
+		DrawString(m_textPosX, 100, "ゲームクリア", GetColor(255, 255, 255));
 	}
-	DrawString(m_textPosX, 100, "ゲーム画面", GetColor(255, 255, 255));
+
 }
+
 
 void SceneMain::draw()
 {
@@ -188,20 +207,13 @@ void SceneMain::draw()
 		assert(pShot);
 		pShot->draw();
 	}
-	// 現在存在している玉の数を表示
-	DrawFormatString(0, 0, GetColor(225, 225, 225), "弾の数:%d", m_pShotVt.size());
+	// 現在存在している玉の数を表示(デバック用)
+//	DrawFormatString(0, 0, GetColor(225, 225, 225), "弾の数:%d", m_pShotVt.size());
 }
 
+// 生死判定のチェック
 bool SceneMain::isCol()
 {
-	/*for (int i = 0; i < kCheck; i++)
-	{
-		if (enemy[i].isDead())
-		{
-			return true;
-		}
-	}*/
-
 	if(kCheck == true)
 	{
 		return true;
@@ -210,8 +222,6 @@ bool SceneMain::isCol()
 	{
 		return false;
 	}
-
-
 }
 
 
