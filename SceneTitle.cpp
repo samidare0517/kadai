@@ -13,7 +13,7 @@ void SceneTitle::init()
 	m_menu.addItem("ゲームスタート");
 
 
-	m_menu.setPos(64, 64);
+	m_menu.setPos(350, 300);
 
 	m_menu.setupCursor();
 }
@@ -36,5 +36,5 @@ void SceneTitle::update()
 void SceneTitle::draw()
 {
 	m_menu.draw();
-	DrawString(400, 100, "タイトル画面", GetColor(255, 255, 255));
+//	DrawString(400, 100, "タイトル画面", GetColor(255, 255, 255));
 }
