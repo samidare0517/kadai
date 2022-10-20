@@ -166,7 +166,7 @@ void SelectMenu::draw()
 	int width = getWindowWidth();
 	int height = getWindowHeight();
 
-	DrawBox(m_pos.x, m_pos.y, m_pos.y + width, m_pos.y + height, GetColor(64, 64, 64), true);
+	
 
 	for (int i = 0; i < m_pItem.size(); i++)
 	{
