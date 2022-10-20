@@ -36,5 +36,6 @@ void SceneTitle::update()
 void SceneTitle::draw()
 {
 	m_menu.draw();
-//	DrawString(400, 100, "タイトル画面", GetColor(255, 255, 255));
+	// デバック用	
+	DrawString(400, 100, "タイトル画面", GetColor(255, 255, 255));
 }
